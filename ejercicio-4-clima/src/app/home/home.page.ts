@@ -156,3 +156,4 @@ export class HomePage implements OnInit, OnDestroy {
     window.dispatchEvent(new Event('clima-registro-cambio'));
   }
 }
+
