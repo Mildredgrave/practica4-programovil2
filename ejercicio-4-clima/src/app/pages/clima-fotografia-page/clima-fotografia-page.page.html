@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Registros guardados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <main class="contenedor">
+    <h1>Historial climático</h1>
+
+    <p>
+      Aquí se muestran todas las consultas climáticas guardadas en la aplicación.
+    </p>
+
+    <ion-card *ngIf="registros.length === 0">
+      <ion-card-content>
+        <p>Primero debes realizar una consulta desde la página principal para crear un registro.</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-list *ngIf="registros.length > 0">
+      <ion-item *ngFor="let registro of registros; let i = index">
+        <ion-card class="registro-card">
+          <img
+            *ngIf="registro.fotografia"
+            [src]="registro.fotografia"
+            alt="Vista previa del clima"
+            class="thumbnail"
+          />
+
+          <div *ngIf="!registro.fotografia" class="placeholder">
+            Sin fotografía
+          </div>
+
+          <ion-card-content>
+            <ion-text>
+              <h3>{{ registro.fechaConsulta | date:'dd/MM/yyyy HH:mm' }}</h3>
+              <p><strong>Latitud:</strong> {{ registro.latitud }}</p>
+              <p><strong>Longitud:</strong> {{ registro.longitud }}</p>
+              <p><strong>Temperatura:</strong> {{ registro.temperatura | number:'1.0-1' }} °C</p>
+              <p><strong>Sensación térmica:</strong> {{ registro.sensacionTermica | number:'1.0-1' }} °C</p>
+              <p><strong>Humedad:</strong> {{ registro.humedad }} %</p>
+              <p><strong>Velocidad del viento:</strong> {{ registro.velocidadViento | number:'1.0-1' }} km/h</p>
+            </ion-text>
+
+            <ion-button expand="block" size="small" (click)="tomarFotografia(i)">
+              {{ registro.fotografia ? 'Agregar o reemplazar fotografía' : 'Tomar fotografía' }}
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </main>
+</ion-content>

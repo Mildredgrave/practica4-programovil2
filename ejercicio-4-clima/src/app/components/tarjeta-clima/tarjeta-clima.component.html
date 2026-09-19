@@ -1,0 +1,52 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>
+      {{ clima.pais }}
+    </ion-card-title>
+
+    <ion-card-subtitle>
+      Capital consultada: {{ clima.capital }}
+    </ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <span>Temperatura</span>
+          <strong>
+            {{ clima.temperatura | number:'1.0-1' }} °C
+          </strong>
+        </ion-col>
+
+        <ion-col size="6">
+          <span>Sensación térmica</span>
+          <strong>
+            {{ clima.sensacionTermica | number:'1.0-1' }} °C
+          </strong>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <span>Humedad</span>
+          <strong>{{ clima.humedad }} %</strong>
+        </ion-col>
+
+        <ion-col size="6">
+          <span>Viento</span>
+          <strong>
+            {{ clima.velocidadViento | number:'1.0-1' }}
+            km/h
+          </strong>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <p class="actualizacion">
+      Actualizado:
+      {{ clima.fechaHora | date:'dd/MM/yyyy HH:mm' }}
+    </p>
+  </ion-card-content>
+</ion-card>

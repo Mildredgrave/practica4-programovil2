@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ejercicio-4-clima</string>
+    <string name="title_activity_main">ejercicio-4-clima</string>
+    <string name="package_name">gt.edu.umes.ejercicio4clima</string>
+    <string name="custom_url_scheme">gt.edu.umes.ejercicio4clima</string>
+</resources>

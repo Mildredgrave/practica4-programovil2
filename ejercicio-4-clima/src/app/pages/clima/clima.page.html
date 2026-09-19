@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Clima actual</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <main class="contenedor">
+    <h1>Consulta el clima</h1>
+
+    <p>
+      Presiona el botón para obtener tu ubicación actual mediante GPS y consultar el clima.
+    </p>
+
+    <ion-button expand="block" (click)="consultarClima()">
+      Obtener clima actual
+    </ion-button>
+
+    <div class="estado" *ngIf="cargando">
+      <ion-spinner name="crescent" aria-label="Consultando clima"></ion-spinner>
+      <p>Consultando clima...</p>
+    </div>
+
+    <ion-text color="danger" *ngIf="mensajeError">
+      <p class="estado">{{ mensajeError }}</p>
+    </ion-text>
+
+    <app-tarjeta-clima *ngIf="clima as climaActual" [clima]="climaActual"></app-tarjeta-clima>
+  </main>
+</ion-content>

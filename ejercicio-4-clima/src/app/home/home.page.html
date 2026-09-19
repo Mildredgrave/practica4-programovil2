@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Clima GPS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <main class="inicio">
+    <div class="contenedor">
+      <p class="subtitulo">Universidad Mesoamericana</p>
+
+      <h1>Consulta el clima de tu ubicación actual</h1>
+
+      <p class="descripcion">
+        Obtén la temperatura, humedad y viento utilizando la ubicación GPS del dispositivo.
+      </p>
+
+      <ion-button
+        expand="block"
+        color="primary"
+        (click)="consultarClima()"
+      >
+        Consultar clima
+      </ion-button>
+
+      <div class="estado" *ngIf="cargando">
+        <ion-spinner name="crescent" aria-label="Obteniendo ubicación y clima"></ion-spinner>
+        <p>Obteniendo ubicación y consultando el clima...</p>
+      </div>
+
+      <ion-text color="danger" *ngIf="mensajeError">
+        <p class="mensaje-error">{{ mensajeError }}</p>
+      </ion-text>
+
+      <ion-card class="resumen">
+        <ion-card-content>
+          <p class="etiqueta">Total de registros climáticos guardados</p>
+          <h2>{{ totalRegistros }}</h2>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-button
+        expand="block"
+        fill="outline"
+        routerLink="/clima-fotografia-page"
+      >
+        Registros guardados
+      </ion-button>
+    </div>
+  </main>
+</ion-content>

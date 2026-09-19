@@ -1,0 +1,7 @@
+{
+  "name": "ejercicio-4-clima",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
